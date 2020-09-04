@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+message Empty {};
+
+message Orders {
+    int32 id = 1;
+    float amount = 2;
+    string trasactionId = 3;
+    int32 customerId = 4;
+    float tax = 5;
+}
+
+message OrderBody {
+    Orders orders = 1;
+}
+
+message SuccessRes {
+    int32 statusCode = 1;
+    string message = 2;
+}
+
+message MultiOrderResp {
+    repeated Orders orders = 1;
+}
+
+message OrderByCustomerId {
+    int32 customerId = 1;
+}
+
+message OrderById {
+    int32 id = 1;
+}
+
+service OrdersService {
+    rpc InsertOrder(OrderBody) returns (SuccessRes);
+    rpc UpdateOrder(OrderBody) returns (OrderBody);
+    rpc GetCustomerOrder(OrderByCustomerId) returns (MultiOrderResp);
+    rpc GetOrder(OrderById) returns (OrderBody);
+}
+

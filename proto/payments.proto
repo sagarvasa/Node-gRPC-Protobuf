@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+message Payments {
+    string id = 1;
+    string transactionId = 2;
+    string paymentMode = 3;
+    string paymentAmount = 4;
+}
+
+message PaymentReq {
+    Payments payment = 1;
+}
+
+message PaymentRes {
+    Payments payment = 1;
+}
+
+message GetPaymentByTID {
+    string transactionId = 1;
+}
+
+message GetPaymentByModeReq {
+    string paymentMode = 1;
+}
+
+message MultiPaymentRes {
+    repeated Payments payments = 1;
+}
+
+service PaymentService {
+    rpc AddPayment(PaymentReq) returns (PaymentRes);
+    rpc GetPaymentByMode(GetPaymentByModeReq) returns (MultiPaymentRes);
+    rpc GetPaymentByTID(PaymentReq) returns (PaymentRes);
+}

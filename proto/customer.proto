@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+enum Gender {
+    Male = 0; //First enum value must be 0 in proto3
+    Female = 1;   
+};
+
+message Empty {};
+
+message Customer {
+    int32 id = 1;
+    string name = 2;
+    Gender gender = 3;
+    string mobileNo = 4;
+    bool isActive = 5;
+}
+
+message GetCustomerReq {
+    Customer customer = 1;
+}
+
+message GetCustomerRes {
+    Customer customer = 1;
+}
+
+message GetCustomerByGenderReq {
+    Gender gender = 1;
+}
+
+message CustomersRes {
+    repeated Customer customers = 1;
+}
+
+service CustomerService {
+    rpc GetCustomer(GetCustomerReq) returns (GetCustomerRes);
+    rpc AddCustomer(Customer) returns (GetCustomerRes);
+    rpc updateCustomer(Customer) returns (GetCustomerRes);
+    rpc GetCustomerByGender(GetCustomerByGenderReq) returns (CustomersRes);
+    rpc GetAllCustomer(Empty) returns (CustomersRes);
+}
