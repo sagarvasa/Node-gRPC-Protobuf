@@ -10,6 +10,7 @@ const CUSTOMER_SERVER_URL = "localhost:3001";
 const ORDERS_SERVER_URL = "localhost:3002";
 const PAYMENTS_SERVER_URL = "localhost:3003";
 
+// configuring gRPC clients. Gateway will call customer, order, payments service hence acting as a client to them
 let loaderOptions = {
     keepCase: true,
     longs: String,

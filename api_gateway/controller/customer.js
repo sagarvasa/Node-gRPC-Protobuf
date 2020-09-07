@@ -6,7 +6,7 @@ const getCustomerByQuery = (req, res) => {
         console.log("get customer request query ", req.query);
         let query = {};
         let isQueryByGender = false;
-        // Query has gender, filter customers only by gender
+        // If query has gender, filter customers only by gender
         if (req.query.gender) {
             query.gender = req.query.gender;
             isQueryByGender = true;
@@ -14,6 +14,7 @@ const getCustomerByQuery = (req, res) => {
 
         switch (isQueryByGender) {
             case true:
+                // Naming: GetCustomerByGender should be same as declared in service of customer proto
                 customerClient.GetCustomerByGender(query, (err, data) => {
                     // data is of format specified in proto & err details are of grpc error standards
                     if (err) {
@@ -24,6 +25,7 @@ const getCustomerByQuery = (req, res) => {
                 break;
             case false:
             default:
+                // Naming: GetAllCustomer should be same as declared in service of customer proto              
                 customerClient.GetAllCustomer(query, (err, data) => {
                     // data is of format specified in proto & err details are of grpc error standards
                     if (err) {
