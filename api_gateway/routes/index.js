@@ -24,8 +24,11 @@ const router = (app) => {
     //     .get(orderController.getOrder)
     //     .put(orderController.updateOrder)
 
-    // app.route("/api/payments/query")
-    //     .get(paymentController.getPaymentByQuery)
+    app.route("/api/payments/query")
+        .get(paymentController.getPaymentByMode)
+
+    app.route("/api/payments/:tid")
+        .get(paymentController.getPaymentByTransactionId)
 
 }
 

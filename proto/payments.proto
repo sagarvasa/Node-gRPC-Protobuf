@@ -1,10 +1,20 @@
 syntax = "proto3";
 
+enum PaymentMode {
+    paytm = 0;
+    phonepe = 1;
+    debitCard = 2;
+    cod = 3;
+    amazonPay = 4;
+    gPay = 5;
+}
+
 message Payments {
     string id = 1;
     string transactionId = 2;
-    string paymentMode = 3;
-    string paymentAmount = 4;
+    PaymentMode paymentMode = 3;
+    float paymentAmount = 4;
+    int32 orderId = 5;
 }
 
 message PaymentReq {
@@ -15,7 +25,7 @@ message PaymentRes {
     Payments payment = 1;
 }
 
-message GetPaymentByTID {
+message GetPaymentByTIDReq {
     string transactionId = 1;
 }
 
@@ -30,5 +40,5 @@ message MultiPaymentRes {
 service PaymentService {
     rpc AddPayment(PaymentReq) returns (PaymentRes);
     rpc GetPaymentByMode(GetPaymentByModeReq) returns (MultiPaymentRes);
-    rpc GetPaymentByTID(PaymentReq) returns (PaymentRes);
+    rpc GetPaymentByTID(GetPaymentByTIDReq) returns (PaymentRes);
 }
