@@ -38,7 +38,7 @@ function GetCustomer(call, callback) {
 }
 
 // Add new customer in hard coded list. req/res format should be same as specified in proto
-function AddCustomer(call, callback) {
+function addCust(call, callback) {
     let newCustomer = call.request;
     if (!newCustomer || !newCustomer.name) {
         return callback({
@@ -79,9 +79,10 @@ function GetAllCustomer(call, callback) {
     return callback(null, { customers: customers })
 }
 
+// all exported functions should follow rpc service name
 module.exports = {
     GetCustomer,
-    AddCustomer,
+    AddCustomer: addCust,
     updateCustomer,
     GetCustomerByGender,
     GetAllCustomer
