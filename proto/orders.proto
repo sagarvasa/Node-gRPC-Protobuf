@@ -1,6 +1,10 @@
 syntax = "proto3";
 
-message Empty {};
+enum PaymentStatus {
+    SUCCESS = 0;
+    FAILURE = 1;
+    PENDING = 2;
+}
 
 message Orders {
     int32 id = 1;
@@ -8,6 +12,23 @@ message Orders {
     string trasactionId = 3;
     int32 customerId = 4;
     float tax = 5;
+    PaymentStatus paymentStatus = 6;
+}
+
+message Customer {
+    int32 id = 1;
+    string name = 2;
+    string mobileNo = 4;
+}
+
+message OrderWithCustomer {
+    int32 id = 1;
+    float amount = 2;
+    string trasactionId = 3;
+    Customer customer = 4;
+    float tax = 5;
+    PaymentStatus paymentStatus = 6;
+    int32 customerId = 7;
 }
 
 message OrderBody {
@@ -17,10 +38,11 @@ message OrderBody {
 message SuccessRes {
     int32 statusCode = 1;
     string message = 2;
+    int32 id = 3;
 }
 
 message MultiOrderResp {
-    repeated Orders orders = 1;
+    repeated OrderWithCustomer orders = 1;
 }
 
 message OrderByCustomerId {

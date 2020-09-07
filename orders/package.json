@@ -1,0 +1,22 @@
+{
+    "name": "orders",
+    "version": "1.0.0",
+    "description": "Orders microservice for all order related actions",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "node",
+        "gRPC",
+        "protobufs",
+        "express"
+    ],
+    "author": "Sagar Vasa",
+    "license": "ISC",
+    "dependencies": {
+        "@grpc/proto-loader": "0.5.5",
+        "body-parser": "1.19.0",
+        "grpc": "1.24.3"
+    }
+}
