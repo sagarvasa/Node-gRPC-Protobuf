@@ -1,0 +1,22 @@
+{
+  "name": "customer",
+  "version": "1.0.0",
+  "description": "Customer microservice for all customer related actions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "node",
+    "gRPC",
+    "protobufs",
+    "express"
+  ],
+  "author": "Sagar Vasa",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "0.5.5",
+    "body-parser": "1.19.0",
+    "grpc": "1.24.3"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "api_gateway",
+  "version": "1.0.0",
+  "description": "Main entry point for microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "gRPC",
+    "protobuf",
+    "express"
+  ],
+  "author": "Sagar Vasa",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "0.5.5",
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
+    "grpc": "1.24.3"
+  }
+}
