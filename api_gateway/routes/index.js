@@ -17,12 +17,17 @@ const router = (app) => {
         .put(customerController.updateCustomer)
         .get(customerController.GetCustomerById)
     
-    // app.route("/api/orders")
-    //     .post(orderController.insertOrder)
+    app.route("/api/orders")
+        .post(orderController.insertOrder)
 
-    // app.route("/api/orders/:id")
-    //     .get(orderController.getOrder)
-    //     .put(orderController.updateOrder)
+    app.route("/api/orders/customer/:id")
+        .get(orderController.getCustomerOrder)
+
+    app.route("/api/orders/:id")
+        .get(orderController.getOrder)
+    
+    app.route("/api/payments")
+        .post(paymentController.addPayment)
 
     app.route("/api/payments/query")
         .get(paymentController.getPaymentByMode)

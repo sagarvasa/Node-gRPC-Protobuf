@@ -42,7 +42,29 @@ const getPaymentByMode = (req, res) => {
     }
 }
 
+const addPayment = (req, res) => {
+    console.log("add payment request body ", req.body);
+
+    let { paymentMode, paymentAmount, orderId } = req.body;
+    let newPayment = {
+        paymentMode,
+        orderId,
+        paymentAmount
+    };
+
+    // Input to AddPayment should be in same format as specified in proto
+    paymentClient.AddPayment({payment: newPayment}, (err, data) => {
+        // data is of format specified in proto & err details are of grpc error standards
+        if (err) {
+            console.error("add payment ", err)
+            return res.status(500).send({ message: err.message, grpcCode: err.code, details: err.details })
+        }
+        res.status(200).send(data)
+    })
+}
+
 module.exports = {
     getPaymentByTransactionId,
-    getPaymentByMode
+    getPaymentByMode,
+    addPayment
 }
