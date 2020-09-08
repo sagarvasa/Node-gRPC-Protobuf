@@ -1,5 +1,5 @@
 # Node-gRPC-Protobuf
-gRPC with Protobufs Integration for Node.js Microservices
+POC explains gRPC with Protobufs Integration for Node.js Microservices
 
 # Project Structure
 - api gateway (Single point contact for entire microservice)
@@ -24,9 +24,11 @@ gRPC with Protobufs Integration for Node.js Microservices
     - package.json
 - proto (all proto file goes under proto)
 
-* Internal communication between all the services is through rpc calls. Only APIs of gateway are exposed to outside.
-* gateway is also gRPC client for all micro service here (configuration is in grpc_client folder & implementation is in controller folder of gateway). 
-* order service also has grpc client folder since it is client for customer service. Same goes for payment service. After successul payment, transaction id & payment status needs to be updated hence payment service also needs to call orders API. (one service can call other service, it has to meet rpc guidlines mentioned in proto file)
+# Notes
+1. Internal communication between all the services is through rpc calls. Only APIs of gateway are exposed to outside.
+2. gateway is also gRPC client for all micro service here (configuration is in grpc_client folder & implementation is in controller folder of gateway). 
+3. order service also has grpc client folder since it is client for customer service. Same goes for payment service. After successul payment, transaction id & payment status needs to be updated hence payment service also needs to call orders API. (one service can call other service, it has to meet rpc guidlines mentioned in proto file)
+4. All data related to customers/orders/payments are stored in in-memory as of now.
 
 # project setup
 1. Clone/Fork the Repo in your workspace.
